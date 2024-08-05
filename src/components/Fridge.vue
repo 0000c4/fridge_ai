@@ -1,6 +1,9 @@
 <template>
-  
-    <StartupScreen v-if="!image" @setImage="(event) => { image = event }" />
+
+    <div v-if="!image">
+      <StartupScreen  @setImage="(event) => { image = event }" />
+        <button class="material_button">Полезный материал</button>
+    </div>
 
     <div v-else>
       <img class="fridge" :src="image" alt="" srcset="" @click="showModal = !showModal">
@@ -11,7 +14,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import Modal from './Modal.vue';
 import StartupScreen from './StartupScreen.vue';
 
@@ -25,7 +28,12 @@ const image = ref('')
   width: 100%;
   height: 93vh;
 }
-
+.material_button {
+  padding: 0.5rem;
+  font-size: 18px;
+  color: white;
+  background-color: #2ab82a;
+}
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s ease;
