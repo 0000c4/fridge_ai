@@ -2,7 +2,7 @@
 
     <div v-if="!image">
       <StartupScreen  @setImage="(event) => { image = event }" />
-        <button class="material_button">Полезный материал</button>
+        <a class="material_button checklist_button" href="checklist.pdf" >Полезный материал</a>
     </div>
 
     <div v-else>
@@ -25,14 +25,25 @@ const image = ref('')
 
 <style scoped>
 .fridge {
-  width: 100%;
-  height: 93vh;
+  width: 360px;
+  height: auto;
+  object-fit: contain;
 }
 .material_button {
   padding: 0.5rem;
   font-size: 18px;
   color: white;
   background-color: #2ab82a;
+  border-radius: 8px;
+}
+.checklist_button{
+width: 50%;
+position: absolute;
+bottom: 16px;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
 }
 .v-enter-active,
 .v-leave-active {

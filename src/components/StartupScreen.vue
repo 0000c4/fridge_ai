@@ -1,15 +1,18 @@
 <template>
   <div class="slider-container" @touchstart="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd">
     <h1>Выбери свой холодильник</h1>
+
+    <div class="dots">
+      <span v-for="(image, index) in images" :key="index" :class="{ active: index === currentIndex }"
+        @click="goToSlide(index)"></span>
+    </div>
+
     <div class="slider" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
       <div class="slide" v-for="(image, index) in images" :key="index" @click="$emit('setImage',image)">
         <img :src="image" alt="Image Slide" class="slider-image" />
       </div>
     </div>
-    <div class="dots">
-      <span v-for="(image, index) in images" :key="index" :class="{ active: index === currentIndex }"
-        @click="goToSlide(index)"></span>
-    </div>
+
   </div>
 </template>
 
@@ -87,6 +90,7 @@ h1{
 }
 
 .dots {
+  margin-top: 8px;
   text-align: center;
 }
 
